@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.infostretch.qmetry</groupId>
+	<artifactId>junit-java-example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<local.repository.folder>${pom.basedir}/libs/</local.repository.folder>
+	</properties>
+	<repositories>
+		<repository>
+			<id>local-maven-repository</id>
+			<url>file://${local.repository.folder}</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.20</version>
+				<configuration>
+				<testFailureIgnore>true</testFailureIgnore>
+				<useSystemClassLoader>true</useSystemClassLoader>
+					<properties>
+						<property>
+							<name>listener</name>
+							<value>com.qmetry.qaf.automation.integration.qtm4j.JUnitExecutionListener</value>
+						</property>
+					</properties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.qmetry</groupId> -->
+<!-- 			<artifactId>qaf-qtm4j-updator-junit</artifactId> -->
+<!-- 			<version>2.1.13-RC2</version> -->
+<!-- 		</dependency> -->
+	</dependencies>
+
+</project>
