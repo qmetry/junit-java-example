@@ -23,6 +23,6 @@ After providing these details, you are ready to start test.
 mvn test
 ```
 
-It will generate `surefile-reports` test result file. 
+It will generate `surefile-reports`. 
 
 Addionally, right after test completion, test result file will be uploaded on your JIRA instance if you have provided correct details in properties file. 
