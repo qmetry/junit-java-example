@@ -1,5 +1,5 @@
-# cucumber-maven-example
-This is sample cucumber + maven  project in Java. It shows how to upload test result file on JIRA instance using [QMetry for JIRA - Test Management](https://marketplace.atlassian.com/plugins/com.infostretch.QmetryTestManager/cloud/overview).  
+# JUnit-maven-example
+This is sample JUnit + maven  project in Java. It shows how to upload test result file on JIRA instance using [QMetry for JIRA - Test Management](https://marketplace.atlassian.com/plugins/com.infostretch.QmetryTestManager/cloud/overview).  
 
 
 ### Run test
@@ -69,7 +69,7 @@ please update these details in `pom.xml` file.
     <pre class="select-block code-block"><code>automation.qmetry.enabled = true</code>
 <code>automation.qmetry.url = https://importresults.qmetry.com/prod/importresults-qtm4j</code>
 <code>automation.qmetry.apikey = {{your API key}}</code>
-<code>automation.qmetry.filepath = /target/surefire-reports/junit-results.xml</code>
+<code>automation.qmetry.filepath = target/surefire-reports/TEST-com.javacodegeeks.examples.junitmavenexample.CalculatorTest.xml</code>
 <code>automation.qmetry.testrunname = Test Run</code>
 <code>automation.qmetry.labels = lbl1,lbl2</code>
 <code>automation.qmetry.components = com1,com2</code>
