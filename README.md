@@ -8,7 +8,7 @@ please update these details in `pom.xml` file.
 
 <div id="automationFramework" class="border-top m-t-10 p-t-10"><div class="m-t-sm">
     <label class="bold">Step 1: Add the following to the &lt;build&gt; -&gt; &lt;plugins&gt; block in your
-				pom.xml:</label> 
+				pom.xml:</label>
     <pre class="code-block"><code>&lt;build&gt;</code>
 	<code>&lt;plugins&gt;</code>
 		<code>&lt;plugin&gt;</code>
@@ -16,9 +16,12 @@ please update these details in `pom.xml` file.
 			<code>&lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;</code>
 			<code>&lt;version&gt;2.20&lt;/version&gt;</code>
 			<code>&lt;configuration&gt;</code>
-			    <code>&lt;systemPropertyVariables&gt;</code>
-					<code>&lt;cucumber.options&gt;--plugin com.qmetry.automation.CucumberResultUploader&lt;/cucumber.options&gt;</code>
-				<code>&lt;/systemPropertyVariables&gt;</code>
+			    <code>&lt;properties&gt;</code>
+					<code>&lt;property&gt;</code>
+						<code>&lt;name&gt;listener&lt;/name&gt;</code>
+						<code>&lt;value&gt;com.qmetry.automation.JUnitResultUploader&lt;/value&gt;</code>
+					<code>&lt;/property&gt;</code>
+				<code>&lt;/properties&gt;</code>
 			<code>&lt;/configuration&gt;</code>
 		<code>&lt;/plugin&gt;</code>
 	<code>&lt;/plugins&gt;</code>
@@ -27,6 +30,8 @@ please update these details in `pom.xml` file.
     
 </div>
 
+
+
 <div class="m-t-sm">
     <label class="bold">Step 2: Add the following to the &lt;dependencies&gt; block in pom.xml:</label>
     <pre class="code-block"><code>&lt;dependencies&gt;</code>
@@ -34,6 +39,12 @@ please update these details in `pom.xml` file.
         <code>&lt;groupId&gt;com.qmetry&lt;/groupId&gt;</code>
         <code>&lt;artifactId&gt;automation&lt;/artifactId&gt;</code>
         <code>&lt;version&gt;1.0.0&lt;/version&gt;</code>
+        <code>&lt;exclusions&gt;</code>
+			<code>&lt;exclusion&gt;</code>
+				<code>&lt;groupId&gt;org.testng&lt;/groupId&gt;</code>
+				<code>&lt;artifactId&gt;testng&lt;/artifactId&gt;</code>
+			<code>&lt;/exclusion&gt;</code>
+        <code>&lt;/exclusions&gt;</code>
     <code>&lt;/dependency&gt;</code>
 <code>&lt;/dependencies&gt;</code>
 	</pre>
@@ -50,8 +61,6 @@ please update these details in `pom.xml` file.
 <code>&lt;/repositories&gt;</code>
 	</pre>
 </div>
-
-
 <div class="m-t-sm">
     <label class="bold">Step 4: Add qmetry.properties file to root directory of your project</label>
 </div>
@@ -60,7 +69,7 @@ please update these details in `pom.xml` file.
     <pre class="select-block code-block"><code>automation.qmetry.enabled = true</code>
 <code>automation.qmetry.url = https://importresults.qmetry.com/prod/importresults-qtm4j</code>
 <code>automation.qmetry.apikey = {{your API key}}</code>
-<code>automation.qmetry.filepath=target/surefire-reports/TEST-com.javacodegeeks.examples.junitmavenexample.CalculatorTest.xml</code>
+<code>automation.qmetry.filepath = /target/surefire-reports/junit-results.xml</code>
 <code>automation.qmetry.testrunname = Test Run</code>
 <code>automation.qmetry.labels = lbl1,lbl2</code>
 <code>automation.qmetry.components = com1,com2</code>
