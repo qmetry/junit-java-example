@@ -1,24 +1,41 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.infostretch.qmetry</groupId>
-	<artifactId>junit-java-example</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<properties>
-		<local.repository.folder>${pom.basedir}/libs/</local.repository.folder>
-	</properties>
+	<groupId>com.mycompany.app</groupId>
+	<artifactId>junitmavenexample</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>junitmavenexample</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.qmetry</groupId>
+			<artifactId>automation</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.testng</groupId>
+					<artifactId>testng</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
 	<repositories>
 		<repository>
-			<id>local-maven-repository</id>
-			<url>file://${local.repository.folder}</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
+			<id>qmetrytestmanager-mvn-repo</id>
+			<name>QMetry Test Manager Maven Repository</name>
+			<url>https://raw.github.com/qmetry/qtm4j-maven-uploader/mvn-repo/</url>
 		</repository>
 	</repositories>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -26,40 +43,16 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.20</version>
 				<configuration>
-				<testFailureIgnore>true</testFailureIgnore>
-				<useSystemClassLoader>true</useSystemClassLoader>
+					<testFailureIgnore>true</testFailureIgnore>
+					<useSystemClassLoader>true</useSystemClassLoader>
 					<properties>
 						<property>
 							<name>listener</name>
-							<value>com.qmetry.qaf.automation.integration.qtm4j.JUnitExecutionListener</value>
+							<value>com.qmetry.automation.JUnitResultUploader</value>
 						</property>
 					</properties>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>3.4.0</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.qmetry</groupId> -->
-<!-- 			<artifactId>qaf-qtm4j-updator-junit</artifactId> -->
-<!-- 			<version>2.1.13-RC2</version> -->
-<!-- 		</dependency> -->
-	</dependencies>
-
 </project>
