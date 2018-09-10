@@ -60,7 +60,7 @@ public class CalculatorTest {
 		assertFalse(result);
 	}
 
-	@Test
+	@Test(expected = AssertionError.class)
 	public void testSubstraction() {
 		int result = 10 - 3;
 
